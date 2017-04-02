@@ -1,6 +1,10 @@
 # string-to-color-converter
 A simple String to Color Converter
 
+https://goyippi-labs.github.io/string-to-color-converter/
+
+
+
 Based on two stackoverflow.com topics:
 
 http://stackoverflow.com/questions/3426404/create-a-hexadecimal-colour-based-on-a-string-with-javascript
