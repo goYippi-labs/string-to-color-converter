@@ -51,6 +51,21 @@
                 color: #000;
                 opacity:  1;
             }
+            .showstep-checkbox {
+                position: relative;
+                color: #c0bab1;
+                margin-bottom: 10px;
+            }
+            .showstep-checkbox label {
+                margin-left: 30px;
+                display: block;
+            }
+            #showstep {
+                position: absolute;
+                left: 0;
+                top: 3px;
+                width: auto;
+            }
             .output {
                 display: inline-block;
                 margin-right: 10px;
@@ -60,8 +75,12 @@
     <body>
         <div class="input-box">
             <div class="input-box-inner">
-                <input id="string" value="" placeholder="Type your string and press enter" />
-                <div class="output output-length"></div>
+                <div class="input">
+                    <input id="string" value="" placeholder="Type your string and press enter" />
+                    <div class="showstep-checkbox">
+                        <input id="showstep" name="showstep" type="checkbox" /> <label for="showstep">Show color change for each character input</label>
+                    </div>
+                </div>
                 <div class="output output-hex"></div>
                 <div class="output output-rgb"></div>
             </div>
@@ -99,6 +118,13 @@
                     var color = stringToColour($("#string").val());
                     colorOutput( color );
                 }
+
+                $("#string").on("keyup", function() {
+                    if(document.getElementById('showstep').checked) {
+                        var color = stringToColour($("#string").val());
+                        colorOutput( color );
+                    }
+                });
             });
 
             jQuery(document).keypress(function(e) {
