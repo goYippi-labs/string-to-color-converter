@@ -114,23 +114,21 @@
 
             jQuery(document).ready(function($) {
                 $('.output').hide();
+
                 if ($("#string").val()) {
-                    var color = stringToColour($("#string").val());
-                    colorOutput( color );
+                    colorOutput( stringToColour($("#string").val()) );
                 }
 
                 $("#string").on("keyup", function() {
                     if(document.getElementById('showstep').checked) {
-                        var color = stringToColour($("#string").val());
-                        colorOutput( color );
+                        colorOutput( stringToColour($("#string").val()) );
                     }
                 });
             });
 
             jQuery(document).keypress(function(e) {
                 if(e.which == 13) {
-                    var color = stringToColour($("#string").val());
-                    colorOutput( color );
+                    colorOutput( stringToColour($("#string").val()) );
                 }
             });
         </script>
