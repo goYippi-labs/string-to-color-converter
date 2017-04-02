@@ -8,7 +8,7 @@ https://goyippi-labs.github.io/string-to-color-converter/
 Embedding via iframe:
 
 ```html
-<iframe src="https://goyippi-labs.github.io/string-to-color-converter/" width="100%" height="440" frameborder="0"></iframe>
+<iframe src="https://goyippi-labs.github.io/string-to-color-converter/" width="100%" height="300" frameborder="0"></iframe>
 ```
 
 ---
