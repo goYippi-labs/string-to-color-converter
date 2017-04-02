@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>String to Color | goYippi labs</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <style type="text/css">
+            body {
+                font-family: 'Source Sans Pro', Arial, sans-serif;
+                font-size: 1.063em;
+                line-height: 1.5;
+                margin: 0;
+                padding: 0;
+                background-color: #000;
+            }
+            .input-box {
+                max-width: 600px;
+                margin: 0 auto;
+                background-color: #fff;
+            }
+            .input-box-inner {
+                padding: 20px;
+            }
+            input {
+                font-family: 'Source Sans Pro', Arial, sans-serif;
+                font-size: 1.063em;
+                border: 0;
+                background-color: #c0bab1;
+                width: 99%;
+                padding: 3px 1px;
+                -webkit-appearance: none;
+                border-radius: 0;
+                margin-bottom: 10px;
+            }
+            .output {
+                display: inline-block;
+                margin-right: 10px;
+            }
+        </style>
+    <head>
+    <body>
+        <div class="input-box">
+            <div class="input-box-inner">
+                <input id="string" value="" placeholder="Type your string and press enter" />
+                <div class="output output-length"></div>
+                <div class="output output-hex"></div>
+                <div class="output output-rgb"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            // Joe Freeman's answer: http://stackoverflow.com/questions/3426404/create-a-hexadecimal-colour-based-on-a-string-with-javascript
+            var stringToColour = function(str) {
+                var hash = 0;
+                for (var i = 0; i < str.length; i++) {
+                    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+                }
+                var colour = '';
+                for (var i = 0; i < 3; i++) {
+                    var value = (hash >> (i * 8)) & 0xFF;
+                    colour += ('00' + value.toString(16)).substr(-2);
+                }
+                return colour;
+            }
+
+            // Pluto's comment: http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+            var hexToRgb = function(hex) {
+                return [(bigint = parseInt(hex, 16)) >> 16 & 255, bigint >> 8 & 255, bigint & 255].join();
+            }
+
+            var colorOutput = function(color) {
+                $('body').css('background-color', '#' + color);
+                $('.output-hex').show().empty().append( 'HEX: #' + color );
+                $('.output-rgb').show().empty().append( 'RGB: ' + hexToRgb(color) );
+            }
+
+            jQuery(document).ready(function($) {
+                $('.output').hide();
+                if ($("#string").val()) {
+                    var color = stringToColour($("#string").val());
+                    colorOutput( color );
+                }
+            });
+
+            jQuery(document).keypress(function(e) {
+                if(e.which == 13) {
+                    var color = stringToColour($("#string").val());
+                    colorOutput( color );
+                }
+            });
+        </script>
+    </body>
+</html>
