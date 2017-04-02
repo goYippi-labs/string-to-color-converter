@@ -3,7 +3,13 @@ A simple String to Color Converter
 
 https://goyippi-labs.github.io/string-to-color-converter/
 
+---
 
+```html
+<iframe src="https://goyippi-labs.github.io/string-to-color-converter/" width="100%" height="400"></iframe>
+```
+
+---
 
 Based on two stackoverflow.com topics:
 
