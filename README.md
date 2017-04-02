@@ -5,11 +5,11 @@ https://goyippi-labs.github.io/string-to-color-converter/
 
 ---
 
-```html
-<iframe src="https://goyippi-labs.github.io/string-to-color-converter/" width="100%" height="400"></iframe>
-```
+Embedding via iframe:
 
-<iframe src="https://goyippi-labs.github.io/string-to-color-converter/" width="100%" height="400"></iframe>
+```html
+<iframe src="https://goyippi-labs.github.io/string-to-color-converter/" width="100%" height="300" frameborder="0"></iframe>
+```
 
 ---
 
