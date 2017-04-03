@@ -140,6 +140,13 @@
 						}, 3000);
 					}
                 });
+
+				$("#string").on('input', function() {
+					clearTimeout(timer);
+					timer = setTimeout(function() {
+						colorOutput( stringToColour($("#string").val()) );
+					}, 3000);
+				});
             });
 
             jQuery(document).keypress(function(e) {
