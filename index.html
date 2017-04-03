@@ -92,6 +92,8 @@
         </div>
 
         <script type="text/javascript">
+			var timer;
+
             // Joe Freeman's answer: http://stackoverflow.com/questions/3426404/create-a-hexadecimal-colour-based-on-a-string-with-javascript
             var stringToColour = function(str) {
                 var hash = 0;
@@ -124,10 +126,19 @@
                     colorOutput( stringToColour($("#string").val()) );
                 }
 
+				$("#string").on("keydown", function() {
+					clearTimeout(timer);
+				});
+
                 $("#string").on("keyup", function() {
                     if(document.getElementById('showstep').checked) {
                         colorOutput( stringToColour($("#string").val()) );
-                    }
+                    } else {
+						clearTimeout(timer);
+						timer = setTimeout(function() {
+							colorOutput( stringToColour($("#string").val()) );
+						}, 3000);
+					}
                 });
             });
 
