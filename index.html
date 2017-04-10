@@ -36,19 +36,19 @@
             }
             input::-webkit-input-placeholder {
                 color: #000;
-                opacity:  1;
+                opacity: 1;
             }
             input:-ms-input-placeholder{
                 color: #000;
-                opacity:  1;
+                opacity: 1;
             }
             input::-moz-placeholder {
                 color: #000;
-                opacity:  1;
+                opacity: 1;
             }
             input:-moz-placeholder {
                 color: #000;
-                opacity:  1;
+                opacity: 1;
             }
             #string {
                 -webkit-appearance: none;
@@ -67,8 +67,8 @@
                 left: 0;
                 top: 3px;
                 width: auto;
-                background-color: auto;
-                border-radius: auto;
+                background-color: transparent;
+                border-radius: 0;
                 border: 1px solid #000;
             }
             .output {
@@ -126,26 +126,24 @@
                     colorOutput( stringToColour($("#string").val()) );
                 }
 
-				$("#string").on("keydown", function() {
-					clearTimeout(timer);
-				});
-
-                $("#string").on("keyup", function() {
-                    if(document.getElementById('showstep').checked) {
-                        colorOutput( stringToColour($("#string").val()) );
-                    } else {
+				$("#string").on({
+					keydown: function() {
+						clearTimeout(timer);
+					}, keyup: function() {
+						if(document.getElementById('showstep').checked) {
+							colorOutput( stringToColour($("#string").val()) );
+						} else {
+							clearTimeout(timer);
+							timer = setTimeout(function() {
+								colorOutput( stringToColour($("#string").val()) );
+							}, 3000);
+						}
+					}, input: function() {
 						clearTimeout(timer);
 						timer = setTimeout(function() {
 							colorOutput( stringToColour($("#string").val()) );
 						}, 3000);
 					}
-                });
-
-				$("#string").on('input', function() {
-					clearTimeout(timer);
-					timer = setTimeout(function() {
-						colorOutput( stringToColour($("#string").val()) );
-					}, 3000);
 				});
             });
 
