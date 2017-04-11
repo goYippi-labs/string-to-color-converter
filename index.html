@@ -93,6 +93,7 @@
 
         <script type="text/javascript">
 			var timer;
+			var d = new Date();
 
             // Joe Freeman's answer: http://stackoverflow.com/questions/3426404/create-a-hexadecimal-colour-based-on-a-string-with-javascript
             var stringToColour = function(str) {
@@ -122,26 +123,28 @@
             jQuery(document).ready(function($) {
                 $('.output').hide();
 
-                if ($("#string").val()) {
-                    colorOutput( stringToColour($("#string").val()) );
-                }
+                if ($('#string').val()) {
+                    colorOutput( stringToColour($('#string').val()) );
+                } else {
+					colorOutput( stringToColour('Type your string and press enter - ' + d) );
+				}
 
-				$("#string").on({
+				$('#string').on({
 					keydown: function() {
 						clearTimeout(timer);
 					}, keyup: function() {
 						if(document.getElementById('showstep').checked) {
-							colorOutput( stringToColour($("#string").val()) );
+							colorOutput( stringToColour($('#string').val()) );
 						} else {
 							clearTimeout(timer);
 							timer = setTimeout(function() {
-								colorOutput( stringToColour($("#string").val()) );
+								colorOutput( stringToColour($('#string').val()) );
 							}, 3000);
 						}
 					}, input: function() {
 						clearTimeout(timer);
 						timer = setTimeout(function() {
-							colorOutput( stringToColour($("#string").val()) );
+							colorOutput( stringToColour($('#string').val()) );
 						}, 3000);
 					}
 				});
@@ -149,7 +152,7 @@
 
             jQuery(document).keypress(function(e) {
                 if(e.which == 13) {
-                    colorOutput( stringToColour($("#string").val()) );
+                    colorOutput( stringToColour($('#string').val()) );
                 }
             });
         </script>
